@@ -11,15 +11,15 @@ curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR140/009/ERR1406259/ERR1406259.fastq.g
 Then, create three different subsampling datasets from this one sample. They will be treated as different 'samples' in the tutorial:
 
 ```bash
-seqkit sample -s 123 -p 0.1 ERR1406259.fastq.gz| seqkit head -n 50000 > sample1.fastq.gz
-seqkit sample -s 124 -p 0.1 ERR1406259.fastq.gz| seqkit head -n 50000 > sample2.fastq.gz
-seqkit sample -s 125 -p 0.1 ERR1406259.fastq.gz| seqkit head -n 50000 > sample3.fastq.gz
+seqkit sample -s 123 -p 0.1 ERR1406259.fastq.gz| seqkit head -n 50000 -o sample1.fastq.gz
+seqkit sample -s 124 -p 0.1 ERR1406259.fastq.gz| seqkit head -n 50000 -o sample2.fastq.gz
+seqkit sample -s 125 -p 0.1 ERR1406259.fastq.gz| seqkit head -n 50000 -o sample3.fastq.gz
 ```
 
 Create one sample with only bad quality reads, using the `-R` option of `seqkit`:
 
 ```bash
-seqkit seq -R 15 ERR1406259.fastq.gz | seqkit head -n 50000 > sample4.fastq.gz
+seqkit seq -R 15 ERR1406259.fastq.gz | seqkit head -n 50000 -o sample4.fastq.gz
 ```
 
 Remove the full read set, we don't need this in the repository:
